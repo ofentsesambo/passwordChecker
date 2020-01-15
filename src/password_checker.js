@@ -3,28 +3,36 @@
      let lowercheck = /[a-z]/g
      let uppercheck = /[A-Z]/g
      let numcheck = /[0-9]/g
-     let specialcheck = /[!#$%^&*()_+-=]/g
+     let specialcheck = /[!@#$%^&*()_+-=]/g
 
-      if((password != ' ') && (password.length >= 8))
+      if((password != '') && (password.length >= 8))
 
         {
-            if((lowercheck.test(password) == true) || (uppercheck.test(password) == true) ||  (specialcheck.test(password) == true) || (numcheck.test(password) == true)){
+            if((lowercheck.test(password) == true) && (uppercheck.test(password) == true) &&  (specialcheck.test(password) == true)) 
                 return true;
-            }
-               
-            else{
-                return false;
-            }               
-         }
-        else{
-            console.log("password is invalid");
-        } 
+
+                else if((lowercheck.test(password) == true) && (uppercheck.test(password) == true) && (numcheck.test(password)))
+                  return true;
+                  
+                else if((uppercheck.test(password) == true) && (specialcheck.test(password) == true) && (numcheck.test(password)))
+                  return true;
+                
+                else if((specialcheck.test(password) == true) && (numcheck.test(password)) &&(lowercheck.test(password) == true))
+                  return true;
+
+                else if((numcheck.test(password)) && (lowercheck.test(password) == true) && (uppercheck.test(password) == true))
+                  return true;
+
+                  else
+                  return false;
+        }
+
+        else 
+            return false
         
- }
-
-
-
- function passwordIsValid(password){
+    }
+        
+     function passwordIsValid(password){
 
 
       let lowercheck = /[a-z]/g
@@ -64,12 +72,7 @@
    catch (error){
        console.log(error)
    }
-
-
 }
-
-
-
 
 module.exports = {
     passwordIsOkay, passwordIsValid
