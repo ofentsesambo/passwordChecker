@@ -1,5 +1,5 @@
 let password = require("../src/password_checker.js");
-let testPassword = "Gd1$1fta"
+let testPassword = "Gd1$1fta4"
 let okay = password.passwordIsOkay(testPassword);
 
 describe("password is okay ", function(){
